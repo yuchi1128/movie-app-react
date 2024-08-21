@@ -4,12 +4,27 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import { Route, BrowserRouter, Routes } from 'react-router-dom';
+
+import { CookiesProvider } from 'react-cookie';
+import SignIn from './components/Login';
+import SignUp from './components/SignUp';
+
+
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <CookiesProvider>
+        <Routes>
+          <Route path="/" element={<SignIn />} />
+          <Route path="/register" element={<SignUp />} />
+          <Route path="/youtube" element={<App />} />
+        </Routes>
+      </CookiesProvider>
+    </BrowserRouter>
   </React.StrictMode>
 );
 
